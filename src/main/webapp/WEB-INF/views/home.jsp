@@ -110,11 +110,9 @@
 		      <label for="password">Şifre</label>
 		      <input type="password" name="password" id="password" class="form-control" placeholder="Şifre girin">
 		      </div>
+		      <button id="button" style="float: left;width: 100px" type="submit" class="btn btn-primary">Giriş</button>
+	      	<button type="button" style="float: left;width: 100px" class="btn btn-danger" data-dismiss="modal">Close</button>
 		    </form>
-        </div>
-        <div class="modal-footer">
-          <button id="button" style="float: left;width: 100px" type="submit" class="btn btn-primary">Giriş</button>
-	      <button type="button" style="float: left;width: 100px" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
       
