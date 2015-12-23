@@ -12,15 +12,13 @@ import com.horizon.fps.Model.Product;
 public class ProductDB {
 
 	//private Connection connection;
-	private List<Product> users;
 	
 	public void openConnectionToDB(){
 		Connection c = null;
 	      try {
-	         Class.forName("org.postgresql.Driver");
-	         c = DriverManager
-	            .getConnection("jdbc:postgresql://localhost:5432/horizon",
-	            "postgres", "123");
+	    	  Class.forName("org.postgresql.Driver");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         System.err.println(e.getClass().getName()+": "+e.getMessage());
@@ -34,11 +32,8 @@ public class ProductDB {
 	      Statement stmt = null;
 	      try {
 	         Class.forName("org.postgresql.Driver");
-	         c = DriverManager
-	            .getConnection("jdbc:postgresql://localhost:5432/horizon",
-	            "postgres", "123");
-	         c.setAutoCommit(false);
-	         System.out.println("Opened database successfully");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 
 	         stmt = c.createStatement();
 	         String sql = "INSERT INTO product "
@@ -65,11 +60,9 @@ public class ProductDB {
 	       List<Product> list = new ArrayList<Product>(); 
 	       
 	       try {
-	       Class.forName("org.postgresql.Driver");
-	         c = DriverManager
-	            .getConnection("jdbc:postgresql://localhost:5432/horizon",
-	            "postgres", "123");
-	         c.setAutoCommit(false);
+	    	   Class.forName("org.postgresql.Driver");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 	         System.out.println("Opened database successfully");
 	         
 	         stmt = c.createStatement();
@@ -100,11 +93,9 @@ public class ProductDB {
 	       Statement stmt = null;
 	       Product send = null;
 	       try {
-	       Class.forName("org.postgresql.Driver");
-	         c = DriverManager
-	            .getConnection("jdbc:postgresql://localhost:5432/horizon",
-	            "postgres", "123");
-	         c.setAutoCommit(false);
+	    	   Class.forName("org.postgresql.Driver");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 	         System.out.println("Opened database successfully");
 	         
 	         
@@ -132,8 +123,5 @@ public class ProductDB {
 		return send;
 	}
 	
-	public ProductDB() {
-		users = new ArrayList<Product>();
-	}
 	
 }

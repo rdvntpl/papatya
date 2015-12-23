@@ -11,11 +11,12 @@ import com.horizon.fps.Model.User;
 
 public class UserDB {
 	
-	public void openConnectionToDB(){
+	public void connection(){
 		Connection c = null;
 	      try {
-	         Class.forName("org.postgresql.Driver");
-	         c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/horizon","postgres", "123");
+	    	  Class.forName("org.postgresql.Driver");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         System.err.println(e.getClass().getName()+": "+e.getMessage());
@@ -28,9 +29,9 @@ public class UserDB {
 		Connection c = null;
 	      Statement stmt = null;
 	      try {
-	         Class.forName("org.postgresql.Driver");
-	         c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/horizon",
-	            "postgres", "123");
+	    	  Class.forName("org.postgresql.Driver");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 	         c.setAutoCommit(false);
 
 	         stmt = c.createStatement();
@@ -54,9 +55,9 @@ public class UserDB {
 	       List<User> list = new ArrayList<User>(); 
 	       
 	       try {
-	       Class.forName("org.postgresql.Driver");
-	         c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/horizon", "postgres", "123");
-	         c.setAutoCommit(false);
+	    	   Class.forName("org.postgresql.Driver");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 
 	         String  name,lastname,username,passw,email,phone,address;
 	         
@@ -91,9 +92,9 @@ public class UserDB {
 	       User send = null;
 	       
 	       try {
-	       Class.forName("org.postgresql.Driver");
-	         c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/horizon","postgres", "123");
-	         c.setAutoCommit(false);
+	    	   Class.forName("org.postgresql.Driver");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery( "SELECT * FROM user where id = "+ID+" ;" );
@@ -125,9 +126,9 @@ public class UserDB {
 	       User send = null;
 	       
 	       try {
-	       Class.forName("org.postgresql.Driver");
-	         c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/horizon","postgres", "123");
-	         c.setAutoCommit(false);
+	    	   Class.forName("org.postgresql.Driver");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
+				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
 
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery( "SELECT * FROM users where username = '"+uname+"' and password = '"+pass+"';" );
