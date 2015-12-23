@@ -69,11 +69,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/fps/">Portfolio</a>
+      <a class="navbar-brand" href="/fps/">Papatya Pide</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/fps/">Home</a></li>
+        <li class="active"><a href="/fps/">Anasayfa</a></li>
         <li><a href="Account">Hesabım</a></li>
         <li><a href="#">İletişim</a></li>
         <sec:authorize access="hasRole('Manager')">
@@ -110,11 +110,11 @@
 		      <label for="password">Şifre</label>
 		      <input type="password" name="password" id="password" class="form-control" placeholder="Şifre girin">
 		      </div>
-		      <button style="width:80px" type="submit" class="btn btn-primary">Giriş</button>
 		    </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          <button id="button" style="float: left;width: 100px" type="submit" class="btn btn-primary">Giriş</button>
+	      <button type="button" style="float: left;width: 100px" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
       
