@@ -69,15 +69,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/fps/">Papatya Pide</a>
+      <a class="navbar-brand" href="/">Papatya Pide</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/fps/">Anasayfa</a></li>
-        <li><a href="Account">Hesabım</a></li>
+        <li class="active"><a href="/">Anasayfa</a></li>
+        <li><a href="#">Hesabım</a></li>
         <li><a href="#">İletişim</a></li>
         <sec:authorize access="hasRole('Manager')">
-            <li><a href="/fps/manager/">Yönetim</a></li>
+            <li><a href="/manager/">Yönetim</a></li>
         </sec:authorize>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -129,7 +129,7 @@
 </div>
   
 <div style="margin-bottom: 25px" class="container-fluid text-center">    
-  <div>
+  <div align="center">
   	<c:forEach var="products" items="${products}" >
 	                
 	                <div id="${products.id}" class="tab">
