@@ -1,6 +1,5 @@
 package com.horizon.fps.controller;
 
-import org.postgresql.util.MD5Digest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

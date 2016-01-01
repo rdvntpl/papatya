@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.horizon.fps.controller" project="FoodPreOrderSystem - Heroku" 
+    file="/FoodPreOrderSystem - Heroku/src/main/java/com/horizon/fps/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="173" x="266" y="107"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="com.horizon.fps.Model" project="FoodPreOrderSystem - Heroku" 
+    file="/FoodPreOrderSystem - Heroku/src/main/java/com/horizon/fps/Model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="356" y="318"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="com.horizon.fps.db" project="FoodPreOrderSystem - Heroku" 
+    file="/FoodPreOrderSystem - Heroku/src/main/java/com/horizon/fps/db" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="609" y="218"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <dependency id="4">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="5">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="6">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
