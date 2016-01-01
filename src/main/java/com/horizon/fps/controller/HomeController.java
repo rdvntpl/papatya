@@ -24,8 +24,6 @@ public class HomeController {
 		home.addObject("products",pService.selectAllFromDB());
 		home.addObject("user",new User());
 		
-		
-		
 		return home;
 	}
 	
