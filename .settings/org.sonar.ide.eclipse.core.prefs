@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
 extraProperties=
 projectKey=com.horizon\:fps
-serverUrl=http\://localhost\:9000
+serverUrl=http\://localhost\:80
 version=2

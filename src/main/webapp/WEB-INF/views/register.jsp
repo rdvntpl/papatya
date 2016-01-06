@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" pageEncoding="utf-8" language="java"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="tr" >
@@ -10,6 +11,7 @@
 <script src="<c:url value="/resources/manager/js/jquery-1.10.2.min.js"/>" ></script>
 <link href="<c:url value="/resources/manager/css/bootstrap.min.css" />" rel='stylesheet' type='text/css' />
 <script src="<c:url value="/resources/manager/js/bootstrap.min.js" />" ></script>
+
 <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -21,6 +23,11 @@
     footer {
 	  background-color: #f2f2f2;
       padding: 20px;
+    }
+    
+    table td {
+    	width:200px;
+    	padding:4px;  
     }
     
     .tab {
@@ -110,6 +117,7 @@
 		      </div>
 		      <div class="modal-footer">
         	<button id="button" style="float: left;width: 100px" type="submit" class="btn btn-primary">Giriş</button>
+
 	      	<button type="button" style="float: left;width: 100px" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
 		    </form>
@@ -128,18 +136,52 @@
 </div>
   
 <div style="margin-bottom: 25px" class="container-fluid text-center">    
-  <div align="center">
-  	<c:forEach var="products" items="${products}" >
-	                
-	                <div id="${products.id}" class="tab">
-	                    <p>${products.name}</p>
-	                    <p>${products.price} TL</p>                 
-	                </div>
-	</c:forEach>
-    
-       
-</div><br>
-
+<div align="center">
+        <form:form  action="/fps/register/" method="post" commandName="user">
+            <table>
+                <tr>
+                    <td colspan="2" align="center"><h2>Üye Kaydı</h2></td>
+                </tr>
+                <tr>
+                    <td>Ad : </td>
+                    <td><form:input path="name" /></td>
+                    <td><form:errors path="name"/></td>
+                </tr>
+                <tr>
+                    <td>Soyad : </td>
+                    <td><form:input path="lastname" /></td>
+                </tr>
+                <tr>
+                    <td>Kullanıcı Adı : </td>
+                    <td><form:input path="username" /></td>
+                </tr>
+                <tr>
+                    <td>Şifre : </td>
+                    <td><form:input path="password" /></td>
+                </tr>
+                <tr>
+                    <td>Şifre Tekrar: </td>
+                    <td><input  path="password2" /></td>
+                </tr>
+                <tr>
+                    <td>E-mail : </td>
+                    <td><form:input path="email" /></td>
+                </tr>
+                <tr>
+                    <td>Telefon : </td>
+                    <td><form:input path="phone" /></td>
+                </tr>
+                <tr>
+                    <td>Adres : </td>
+                    <td><form:input path="adress" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input id="form" class="btn btn-info" type="submit" value="Register" /></td>
+                </tr>
+            </table>
+            <span>${message}</span>
+        </form:form>
+    </div>
 </div>
 </body>
 

@@ -6,15 +6,17 @@ public class User {
 	private String lastname;
 	private String username;
 	private String password;
+	private String password2;
 	private String email;
 	private String phone;
 	private String adress;
+	private int auth;
 	
 	public User() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	public User(int i, String n , String ln, String un, String ps, String em, String ph, String ad) {
+	public User(int i, String n , String ln, String un, String ps, String em, String ph, String ad, int a) {
 		id = i;
 		name = n;
 		lastname = ln;
@@ -23,6 +25,7 @@ public class User {
 		email = em;
 		phone = ph;
 		adress = ad;
+		auth = a;
 	}
 
 	public String getName() {
@@ -87,5 +90,21 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getAuth() {
+		return auth;
+	}
+
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
+
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 }

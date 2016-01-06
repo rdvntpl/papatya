@@ -11,14 +11,13 @@ import com.horizon.fps.Model.Product;
 
 public class ProductDB {
 
-	//private Connection connection;
 	
 	public void openConnectionToDB(){
 		Connection c = null;
 	      try {
 	    	  Class.forName("org.postgresql.Driver");
-	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+	    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         System.err.println(e.getClass().getName()+": "+e.getMessage());
@@ -32,8 +31,8 @@ public class ProductDB {
 	      Statement stmt = null;
 	      try {
 	         Class.forName("org.postgresql.Driver");
-	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+	    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
 
 	         stmt = c.createStatement();
 	         String sql = "INSERT INTO product "
@@ -61,8 +60,8 @@ public class ProductDB {
 	       
 	       try {
 	    	   Class.forName("org.postgresql.Driver");
-	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+	    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
 	         System.out.println("Opened database successfully");
 	         
 	         stmt = c.createStatement();
@@ -72,10 +71,6 @@ public class ProductDB {
 	            String  name = rs.getString("name");
 	            int price  = rs.getInt("price");
 	            list.add(new Product(id, name, price));
-	            /*System.out.println( "ID = " + id );
-	            System.out.println( "NAME = " + name );
-	            System.out.println( "Price = " + price );
-	            System.out.println();*/
 	         }
 	         rs.close();
 	         stmt.close();
@@ -94,8 +89,8 @@ public class ProductDB {
 	       Product send = null;
 	       try {
 	    	   Class.forName("org.postgresql.Driver");
-		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+		    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
 	         System.out.println("Opened database successfully");
 	         
 	         
@@ -107,10 +102,6 @@ public class ProductDB {
 	            String  name = rs.getString("name");
 	            int price  = rs.getInt("price");
 	            send = new Product(id, name, price);
-	            /*System.out.println( "ID = " + id );
-	            System.out.println( "NAME = " + name );
-	            System.out.println( "Price = " + price );
-	            System.out.println();*/
 	         }
 	         rs.close();
 	         stmt.close();

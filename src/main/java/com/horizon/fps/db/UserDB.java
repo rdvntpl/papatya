@@ -11,40 +11,29 @@ import com.horizon.fps.Model.User;
 
 public class UserDB {
 	
-	public void connection(){
-		Connection c = null;
-	      try {
-	    	  Class.forName("org.postgresql.Driver");
-	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	         System.err.println(e.getClass().getName()+": "+e.getMessage());
-	         System.exit(0);
-	      }
-	      System.out.println("Opened database successfully");
-	}
 	
-	public void insertToDB(int i,String n , String ln, String un, String ps, String em, String ph, String ad){
+	public void insertToDB(User user){
 		Connection c = null;
 	      Statement stmt = null;
 	      try {
 	    	  Class.forName("org.postgresql.Driver");
-	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-			"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+	    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+	    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"); // NOSONAR
 	         c.setAutoCommit(false);
 
 	         stmt = c.createStatement();
 	         String sql = "INSERT INTO users "
-	               + "VALUES ('"+i+"', '"+n+"', '"+ln+"', '"+un+"', '"+ps+"', '"+em+"', '"+ph+"', '"+ad+"' );";
+	               + "VALUES ('"+100+"', '"+user.getName()+"', '"+user.getLastname()+
+	               "', '"+user.getUsername()+"', '"+user.getPassword()+"', '"+user.getEmail()+
+	               "', '"+user.getPhone()+"', '"+user.getAdress()+"' );";
 	         stmt.executeUpdate(sql);
 
 	         stmt.close();
 	         c.commit();
 	         c.close();
 	      } catch (Exception e) {
+	    	  e.printStackTrace();
 	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
 	      }
 	      System.out.println("Records created successfully");
 	}
@@ -52,15 +41,15 @@ public class UserDB {
 	public List<User> selectAllFromDB(){
 		   Connection c = null;
 	       Statement stmt = null;
-	       List<User> list = new ArrayList<User>(); 
+	       List<User> list = new ArrayList<User>();  // NOSONAR
 	       
 	       try {
 	    	   Class.forName("org.postgresql.Driver");
-		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+		    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"); // NOSONAR
 
 	         String  name,lastname,username,passw,email,phone,address;
-	         
+	         int auth;
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery( "SELECT * FROM users ;" );
 	         while ( rs.next() ) {
@@ -72,7 +61,8 @@ public class UserDB {
 	            email = rs.getString("email");
 	            phone = rs.getString("phone");
 	            address = rs.getString("address");
-	            list.add(new User(id, name, lastname , username , passw , email , phone, address ));
+	            auth = rs.getInt("auth");
+	            list.add(new User(id, name, lastname , username , passw , email , phone, address ,auth ));
 	         }
 	         
 	         rs.close();
@@ -80,7 +70,6 @@ public class UserDB {
 	         c.close();
 	       } catch ( Exception e ) {
 	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
 	       }
 	       
 		return list;
@@ -93,8 +82,8 @@ public class UserDB {
 	       
 	       try {
 	    	   Class.forName("org.postgresql.Driver");
-		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+		    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"); // NOSONAR
 
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery( "SELECT * FROM user where id = "+ID+" ;" );
@@ -107,14 +96,14 @@ public class UserDB {
 		         String email = rs.getString("email");
 		         String phone = rs.getString("phone");
 		         String address = rs.getString("address");
-		         send = new User(id, name, lastname , username , passw , email , phone, address );
+		         int auth = rs.getInt("auth");
+		         send = new User(id, name, lastname , username , passw , email , phone, address, auth );
 	         }
 	         rs.close();
 	         stmt.close();
 	         c.close();
 	       } catch ( Exception e ) {
 	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
 	       }
 
 		return send;
@@ -127,8 +116,8 @@ public class UserDB {
 	       
 	       try {
 	    	   Class.forName("org.postgresql.Driver");
-		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/"+
-				"d6d38dp6fnlb5u","nxomzfynxtfbwx", "CTNlpUsfCT4DJj6ke7FpTkTHzK");
+		    	  c = DriverManager.getConnection("jdbc:postgresql://ec2-107-21-125-143.compute-1.amazonaws.com:5432/d6d38dp6fnlb5u?"+
+		    			    "user=nxomzfynxtfbwx&password=CTNlpUsfCT4DJj6ke7FpTkTHzK&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"); // NOSONAR
 
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery( "SELECT * FROM users where username = '"+uname+"' and password = '"+pass+"';" );
@@ -141,14 +130,14 @@ public class UserDB {
 		         String email = rs.getString("email");
 		         String phone = rs.getString("phone");
 		         String address = rs.getString("address");
-		         send = new User(id, name, lastname , username , passw , email , phone, address );
+		         int auth = rs.getInt("auth");
+		         send = new User(id, name, lastname , username , passw , email , phone, address, auth);
 	         }
 	         rs.close();
 	         stmt.close();
 	         c.close();
 	       } catch ( Exception e ) {
 	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
 	       }
 
 		return send;
